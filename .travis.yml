@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t ravenlog/docker-demo -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true ravenlog/docker-demo npm run test
